@@ -45,6 +45,7 @@ body {
     padding: 40px 30px;
     max-width: 426px;
     width: 100%;
+
     position: sticky;
     top: 52px;
 }
@@ -149,18 +150,18 @@ body {
 }
 .outRecipe-needs{
     font-family: 'Raleway', sans-serif;
-    font-style: 20px;
-    line-height: 23px;
+    font-size: 20px;
+    line-height: 26px;
     margin-bottom: 34px;
 }
 .outRecipe-steps{
     font-family: 'Raleway', sans-serif;
-    font-style: 20px;
-    line-height: 23px;
+    font-size: 20px;
+    line-height: 26px;
     margin-bottom: 34px;
 }
 .outRecipe-comments{
     font-family: 'Raleway', sans-serif;
-    font-style: 20px;
-    line-height: 23px;
+    font-size: 20px;
+    line-height: 26px;
 }
