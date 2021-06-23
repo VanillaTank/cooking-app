@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блокнот рецептов</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <!-- удалить, если будут долго грузиться -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Raleway&display=swap" rel="stylesheet">
+    <!-- удалить, если будут долго грузиться -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="container-inner">
+                <div class="filter-side">
+                    <div class="input-wrap">
+                        <input class="filter-side-input" id="searchInput" type="text" placeholder="Введите название блюда">
+                    </div>
+                    
+                    <nav class="btn-wrap">
+                        <button class="nav-btn chosen">Белок</button>
+                        <button class="nav-btn">Овощи</button>
+                        <button class="nav-btn">Горячее</button>
+                        <button class="nav-btn">Молочное</button>
+                        <button class="nav-btn">Сладкое</button>
+                        <button class="nav-btn">Салаты</button>
+                        <button class="nav-btn">Рыба</button>
+                        <button class="nav-btn" id="btnShowAll">Показать все</button>
+                    </nav>
+                    <ul class="outMenu">
+                        <li class="outMenuItemLi active">
+                            <h3>Оладушки</h3>
+                        </li>
+                        <li class="outMenuItemLi">
+                            <h3>Омлет от Тони</h3>
+                        </li>
+                        <li class="outMenuItemLi">
+                            <h3>Салат с оргуцом и чесноком</h3>
+                        </li>
+                        <li class="outMenuItemLi">
+                            <h3>Масурдал</h3>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="result-side">
+                    <div class="outRecipe">
+                        <div>
+                            <h3 class="outRecipe-title">Оладушки</h3>
+                            <div class="outRecipe-needs">
+                                200 гр. муки</br>
+                                2 яйца</br>
+                                3 ст.л. сахара
+                            </div>
+                            <div class="outRecipe-steps">
+                                1.Все смешать</br>
+                                2.Вылить на сковородку</br>
+                                3.Кушать, причмокивая                             
+                            </div>
+                            <div class="outRecipe-comments">Комментарий</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <!-- <div class="container">
+       <input id="searchInput" type="text">
+       <div class="btn-wrap">
+           <button id="btnShowAll">Показать все</button>
+       </div>
+       <ul class="outMenu"></ul>
+       <div class="outRecipe"></div>
+    </div> -->
+
+    <script src="./js/main.js" type="module"></script>
+    </script>
+</body>
+
+</html>
