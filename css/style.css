@@ -19,16 +19,12 @@ body {
     line-height: 24px;
 }
 .section {
+    min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    background-attachment: fixed;
 }
 .container {
     max-width: 1200px;
@@ -38,7 +34,8 @@ body {
 .container-inner {
     display: flex;
     flex-wrap: wrap;
-    margin: 52px 0;
+    padding: 52px 0;
+    justify-content: space-between;
 }
 .filter-side {
     background-color: rgba(255, 255, 255, .56);
@@ -48,8 +45,8 @@ body {
     padding: 40px 30px;
     max-width: 426px;
     width: 100%;
-    margin-right: 70px;
-    transition: .5s ease;
+
+    position: fixed;
 }
 .filter-side-input {
     width: 100%;
