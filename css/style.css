@@ -45,8 +45,8 @@ body {
     padding: 40px 30px;
     max-width: 426px;
     width: 100%;
-
-    position: fixed;
+    position: sticky;
+    top: 52px;
 }
 .filter-side-input {
     width: 100%;
@@ -139,6 +139,8 @@ body {
     background-color: rgba(255, 255, 255, .90);
     box-shadow: 0 0 3px rgba(51, 72, 7, .98);
     border-radius: 37px;
+    position: sticky;
+    top: 52px;
 }
 .outRecipe-title {
     font-size: 45px;
