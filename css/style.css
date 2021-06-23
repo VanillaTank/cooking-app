@@ -8,6 +8,13 @@ html {
     font-family: inherit;
     font-weight: 400;
 }
+html::-webkit-scrollbar { 
+    display: none; 
+}
+html::-moz-scrollbar {
+    width: 0px;
+    height: 0px;
+}
 ul, li {
     list-style: none;
 }
