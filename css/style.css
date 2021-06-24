@@ -117,9 +117,9 @@ body {
     background-color: #263C03;
 }
 .nav-btn#btnShowAll{
-    width: 157px;
-    grid-column: 4/2; 
-    grid-row: 3/3;
+    width: 100%;
+    grid-column: 1/4;
+    grid-row: 4/5;
 }
 .outMenuItemLi{
     padding: 9px 15px 10px;
