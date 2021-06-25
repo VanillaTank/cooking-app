@@ -17,7 +17,7 @@ btnShowAll.addEventListener('click', () => {
     if (data.length != 0) {
         outMenu.innerHTML = '';
         data.forEach(item => { showRecipes(item) })
-    } else outMenu.innerHTML = '<li class="outMenuItemLi">Ничего не найдено</li>'
+    } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
 
 })
 
@@ -74,10 +74,10 @@ function sortingRecipes(evt) {
             }
         })
         if (foundedRecipes.length === 0) {
-            outMenu.innerHTML = '<li class="outMenuItemLi">Ничего не найдено</li>'
+            outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
             return
         }
         outMenu.innerHTML = '';
         foundedRecipes.forEach(item => { showRecipes(item) })
-    } else outMenu.innerHTML = '<li class="outMenuItemLi">Ничего не найдено</li>'
+    } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
 }

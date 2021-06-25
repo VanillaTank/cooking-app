@@ -7,6 +7,7 @@ html {
     padding: 0;
     font-family: inherit;
     font-weight: 400;
+    outline: transparent;
 }
 html::-webkit-scrollbar { 
     display: none; 
@@ -128,6 +129,13 @@ body {
     box-shadow: 0 0 3px #526534;
     cursor: pointer;
 }
+.outMenuItemLiNone {
+    padding: 9px 15px 10px;
+    background-color: rgb(150 29 29 / 90%);
+    border-radius: 2px;
+    box-shadow: 0 0 3px #822a2a;
+    color: #fff;
+}
 .outMenuItemLi+.outMenuItemLi {
     margin-top: 20px;
 }
@@ -152,8 +160,8 @@ body {
 }
 .outRecipe-title {
     font-size: 45px;
-    line-height: 60px;
-    margin-bottom: 10px;
+    line-height: 46px;
+    margin-bottom: 17px;
 }
 .outRecipe-needs{
     font-family: 'Raleway', sans-serif;
