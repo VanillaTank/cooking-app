@@ -30,8 +30,8 @@ function showRandomRecipe() {
     <div>
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
+        <div class="outRecipe-comments">${targetRecipe.comments}</div>        
         <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
-        <div class="outRecipe-comments">${targetRecipe.comments}</div>
     </div>`
     outRecipe.innerHTML = targetRecipeBlock;
   } else outRecipe.innerHTML = "Cписок рецептов пуст" 
@@ -71,8 +71,8 @@ function onClickMenuItem(evt) {
     <div>
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
-        <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
         <div class="outRecipe-comments">${targetRecipe.comments}</div>
+        <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
     </div>`
     outRecipe.innerHTML = targetRecipeBlock;
 }
