@@ -1,5 +1,7 @@
 import data from './data.js'
 
+
+window.onload = () => {showRandomRecipe()}
 const btnShowAll = $('#btnShowAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
@@ -9,9 +11,7 @@ const navBtns = [...document.querySelectorAll('.nav-btn')]
 searchInput.addEventListener('input', (evt) => { onInputSaerchInput(evt) })
 
 
-navBtns.forEach(item => {
-    item.addEventListener('click', (evt) => sortingRecipes(evt))
-})
+navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 
 btnShowAll.addEventListener('click', () => {
     if (data.length != 0) {
@@ -22,6 +22,21 @@ btnShowAll.addEventListener('click', () => {
 })
 
 //----------------------------------------------
+function showRandomRecipe() {
+  if(data.length != 0) {
+    const randomIndex = Math.floor(Math.random() * data.length)
+    const targetRecipe = data[randomIndex];
+    const targetRecipeBlock = `
+    <div>
+        <h3 class="outRecipe-title">${targetRecipe.title}</h3>
+        <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
+        <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
+        <div class="outRecipe-comments">${targetRecipe.comments}</div>
+    </div>`
+    outRecipe.innerHTML = targetRecipeBlock;
+  } else outRecipe.innerHTML = "Cписок рецептов пуст" 
+}
+
 function $(el) {
     return document.querySelector(el);
 }
