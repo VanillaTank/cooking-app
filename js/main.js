@@ -26,15 +26,25 @@ function showRandomRecipe() {
   if(data.length != 0) {
     const randomIndex = Math.floor(Math.random() * data.length)
     const targetRecipe = data[randomIndex];
+
+    const liSteps = () => {
+      const outRecipesSteps = document.createElement('ol')
+      outRecipesSteps.className = "outRecipe-steps"
+      for(let i = 0; i < targetRecipe.steps.length; i++) {
+        outRecipesSteps.innerHTML += `<li>${targetRecipe.steps[i]}</li>`
+      }
+      return outRecipesSteps
+    }
+
     const targetRecipeBlock = `
     <div>
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
-        <div class="outRecipe-comments">${targetRecipe.comments}</div>        
-        <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
+        <div class="outRecipe-comments">${targetRecipe.comments}</div>
+        ${liSteps().outerHTML}
     </div>`
     outRecipe.innerHTML = targetRecipeBlock;
-  } else outRecipe.innerHTML = "Cписок рецептов пуст" 
+  } else outRecipe.innerHTML = "Cписок рецептов пуст"
 }
 
 function $(el) {
@@ -67,12 +77,23 @@ function onClickMenuItem(evt) {
     evt.currentTarget.classList.add("active");
     const index = evt.currentTarget.id;
     const targetRecipe = data[index];
+
+
+    const liSteps = () => {
+      const outRecipesSteps = document.createElement('ol')
+      outRecipesSteps.className = "outRecipe-steps"
+      for(let i = 0; i < targetRecipe.steps.length; i++) {
+        outRecipesSteps.innerHTML += `<li>${targetRecipe.steps[i]}</li>`
+      }
+      return outRecipesSteps
+    }
+
     const targetRecipeBlock = `
     <div>
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         <div class="outRecipe-comments">${targetRecipe.comments}</div>
-        <div class="outRecipe-steps">${targetRecipe.steps.join('<br>')}</div>
+        ${liSteps().outerHTML}
     </div>`
     outRecipe.innerHTML = targetRecipeBlock;
 }

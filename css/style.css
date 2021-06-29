@@ -9,14 +9,14 @@ html {
     font-weight: 400;
     outline: transparent;
 }
-html::-webkit-scrollbar { 
-    display: none; 
+html::-webkit-scrollbar {
+    display: none;
 }
 html::-moz-scrollbar {
     width: 0px;
     height: 0px;
 }
-ul, li {
+ul>li {
     list-style: none;
 }
 
