@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -8,13 +9,13 @@ html {
     font-family: inherit;
     font-weight: 400;
 }
-html::-webkit-scrollbar { 
+/* html::-webkit-scrollbar { 
     display: none; 
 }
 html::-moz-scrollbar {
     width: 0px;
     height: 0px;
-}
+} */
 ul, li {
     list-style: none;
 }
@@ -64,7 +65,7 @@ body {
     border-radius: 7px;
     border: none;
     box-shadow: 0 0 3px rgba(51, 72, 7, .87);
-    margin-bottom: 43px;
+    margin-bottom: 22px;
     font-family: 'PT Serif', serif;
     color: #272F16;
     font-size: 18px;
@@ -149,6 +150,9 @@ body {
     border-radius: 37px;
     position: sticky;
     top: 52px;
+
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
 }
 .outRecipe-title {
     font-size: 45px;
