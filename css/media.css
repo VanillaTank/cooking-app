@@ -1,0 +1,117 @@
+@media (max-width: 1150px) {
+    .outRecipe {
+        padding: 30px 40px;
+    }
+    .result-side {
+        margin-left: 40px;
+    }
+    .outRecipe-title {
+        font-size: 38px;
+        line-height: 40px;
+    }
+}
+@media (max-width: 1000px) {
+    .container-inner {
+        flex-wrap: wrap;
+    }
+    .result-side {
+        margin: 40px auto 0;
+    }
+    .outRecipe {
+        overflow-y: visible;
+        position: static;
+        max-height: 100%;
+    }
+    .outRecipe-steps {
+        margin-bottom: 0;
+    }
+    .filter-side {
+        position: static;
+        max-width: 674px;
+        margin: 0 auto;
+    }
+    .container-inner{
+        display: block;
+        padding: 52px 30px;
+    }
+    #btnHideAll {
+        display: block;
+    }
+    .nav-btn {
+        width: auto;
+        height: 44px;
+    }
+}
+@media (max-width: 600px) {
+    .btn-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        grid-gap: 15px 0px;
+    } 
+    .nav-btn {
+        width: 47%;
+    }
+    .outRecipe-title {
+        font-size: 33px;
+        line-height: 36px;
+    }
+    .outRecipe-needs,.outRecipe-steps {
+        font-size: 18px;
+        line-height: 24px;  
+    }
+    .outRecipe-needs{
+        margin-bottom: 17px;
+    }
+    
+}
+@media (max-width: 510px) {
+    .container-inner {
+        padding: 30px 0;
+    }
+    .nav-btn {
+        font-size: 16px;
+    }
+    .outMenuItemLi {
+        font-size: 16px;
+    }
+}
+@media (max-width: 450px) {
+    .nav-btn {
+        height: 36px;
+    }    
+    .filter-side {
+        padding: 20px 30px;
+    }
+    .btn-wrap {
+        margin-bottom: 30px;
+    }
+    .filter-side {
+        background-color: rgba(255, 255, 255, .7);
+    }
+    .outRecipe-title {
+        font-size: 30px;
+        line-height: 32px;
+    }
+    .outRecipe-needs, .outRecipe-steps {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .filter-side-input {
+        height: 42px;
+        margin-bottom: 17px;
+        padding: 13px 17px 15px 40px;
+    }
+    .input-wrap::before {
+        top: 12px;
+        left: 12px;
+        width: 18px;
+        height: 18px;
+    }
+    .filter-side-input::placeholder {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    
+}

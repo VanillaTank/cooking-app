@@ -1,25 +1,31 @@
 import data from './data.js'
 
-
 window.onload = () => {
   showRandomRecipe()
   onClickAllRecipes()
 }
 
 const btnShowAll = $('#btnShowAll');
+const btnHideAll = $('#btnHideAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
-const navBtns = [...document.querySelectorAll('.nav-btn')]
+const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 
 
 searchInput.addEventListener('keyup', keyupHandler)
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
-btnShowAll.addEventListener('click', () => { onClickAllRecipes() })
+btnShowAll.addEventListener('click', onClickAllRecipes)
+btnHideAll.addEventListener('click', onClickHideBtn)
 
 //----------------------------------------------
+function onClickHideBtn() {
+  outMenu.innerHTML = '';
+  $('.btn-wrap').classList.add('m0');
+}
+
 function showRandomRecipe() {
   if (data.length != 0) {
     const randomIndex = Math.floor(Math.random() * data.length)
@@ -55,6 +61,7 @@ function $(el) {
 }
 
 function onClickAllRecipes() {
+  $('.btn-wrap').classList.remove('m0');
   if (data.length != 0) {
     outMenu.innerHTML = '';
     data.forEach(item => { showRecipes(item) })
@@ -149,6 +156,7 @@ function onClickMenuItem(evt) {
 }
 
 function sortingRecipes(evt) {
+  $('.btn-wrap').classList.remove('m0');
   navBtns.forEach(item => { item.classList.remove('chosen') })
   evt.currentTarget.classList.add("chosen");
   const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
