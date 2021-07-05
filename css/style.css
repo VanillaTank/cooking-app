@@ -20,7 +20,6 @@ html::-moz-scrollbar {
 ul, li {
     list-style: none;
 }
-
 body {
     font-family: 'PT Serif', serif;
     color: #272F16;
@@ -39,6 +38,9 @@ body {
     max-width: 1200px;
     padding: 0 15px;
     margin: 0 auto;
+}
+.hide {
+    display: none;
 }
 .container-inner {
     display: flex;
