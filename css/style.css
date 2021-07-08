@@ -9,6 +9,7 @@ html {
     font-family: inherit;
     font-weight: 400;
     outline: transparent;
+    font-size: inherit;
 }
 html::-webkit-scrollbar {
     display: none;

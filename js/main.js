@@ -59,7 +59,7 @@ function $(el) {
 function onClickAllRecipes(targetBtn) {
 
   if (targetBtn.classList.contains('active')) {
-    outMenu.innerHTML = '';
+    outMenu.classList.add('hide');
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
     targetBtn.innerText = 'Показать все'
@@ -68,6 +68,7 @@ function onClickAllRecipes(targetBtn) {
       targetBtn.classList.add('active');
       $('.btn-wrap').classList.remove('m0');
       targetBtn.innerText = 'Скрыть все'
+      outMenu.classList.remove('hide');
       outMenu.innerHTML = '';
       data.forEach(item => { showRecipes(item) })
     } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
@@ -77,6 +78,9 @@ function onClickAllRecipes(targetBtn) {
 }
 
 function onInputSaerchInput() {
+
+  outMenu.classList.remove('hide');
+  $('.btn-wrap').classList.remove('m0');
 
   let val = searchInput.value.toLowerCase();
   let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
