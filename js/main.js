@@ -7,7 +7,9 @@ const searchInput = $('#searchInput');
 const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
+const btnInputReset = $('.filter-side-reset');
 
+let isNotEmpty = '';
 
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
@@ -16,6 +18,11 @@ searchInput.addEventListener('keyup', (evt) => {
 })
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
+
+btnInputReset.addEventListener('click', () => {
+  searchInput.value = '';
+  renderData();
+})
 
 window.onload = () => {
   showRandomRecipe()
@@ -53,6 +60,14 @@ function showRandomRecipe() {
   } else outRecipe.innerHTML = "Cписок рецептов пуст"
 }
 
+function renderData() {
+  if (data.length != 0) {
+    onCliclShowToggle()
+    outMenu.innerHTML = '';
+    data.forEach(item => { showRecipes(item) })
+  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+}
+
 function $(el) {
   return document.querySelector(el);
 }
@@ -71,18 +86,10 @@ function onClickAllRecipes(targetBtn) {
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
     targetBtn.innerText = 'Показать все'
-
     searchInput.value = '';
-    navBtns.forEach(item => { item.classList.remove('chosen')})
-
+    navBtns.forEach(item => { item.classList.remove('chosen') })
   } else {
-    if (data.length != 0) {
-      onCliclShowToggle()
-      // searchInput.value = '';
-      // navBtns.forEach(item => { item.classList.remove('chosen') })
-      outMenu.innerHTML = '';
-      data.forEach(item => { showRecipes(item) })
-    } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+    renderData();
   }
 }
 
@@ -98,15 +105,25 @@ function onInputSaerchInput() {
       }
       else {
         elem.classList.remove('hide')
-
       }
     })
+
+    // isNotEmpty = elasticItems.some(item => {
+    //   return !item.classList.contains('hide')
+    // })
+
+    // console.log(isNotEmpty);
+
+    // if (!isNotEmpty) {
+    //   outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+    // }
+
+
   } else {
     elasticItems.forEach(elem => {
       elem.classList.remove('hide')
       elem.innerHTML = elem.innerText
     })
-
   }
 }
 

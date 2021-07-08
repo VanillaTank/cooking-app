@@ -86,6 +86,19 @@ body {
     font-family: 'Raleway', sans-serif;
     color: rgba(39, 47, 22, .76);
 }
+.filter-side-reset {
+  border: none;
+  outline-color: #263C03;
+  box-shadow: none;
+  position: absolute;
+  top: 13px;
+  right: 6px;
+  background-color: transparent;
+  opacity: 0;
+}
+.filter-side-input:focus+.filter-side-reset {
+  opacity: 1;
+}
 .input-wrap {
     position: relative;
 }
