@@ -10,11 +10,8 @@ const keyupHandler = debounce(() => { onInputSaerchInput() })
 
 
 searchInput.addEventListener('keyup', (evt) => {
-  if (evt.code === 'Enter') {
-    onInputSaerchInput()
-  } else {
-    keyupHandler()
-  }
+  if (evt.code === 'Enter') { onInputSaerchInput()
+  } else { keyupHandler()}
 })
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
