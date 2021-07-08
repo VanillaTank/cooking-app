@@ -8,8 +8,12 @@ const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 const btnInputReset = $('.filter-side-reset');
-
 let isNotEmpty = '';
+
+const nothingFounded = document.createElement('li');
+nothingFounded.className = 'outMenuItemLiNone';
+nothingFounded.innerText = 'Ничего не найдено'
+
 
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
@@ -108,16 +112,11 @@ function onInputSaerchInput() {
       }
     })
 
-    // isNotEmpty = elasticItems.some(item => {
-    //   return !item.classList.contains('hide')
-    // })
-
-    // console.log(isNotEmpty);
-
-    // if (!isNotEmpty) {
-    //   outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
-    // }
-
+    isNotEmpty = elasticItems.some(item => {
+      return !item.classList.contains('hide')
+    })
+    if (!isNotEmpty) {outMenu.append(nothingFounded)}
+    else { nothingFounded.remove() }
 
   } else {
     elasticItems.forEach(elem => {
@@ -207,7 +206,7 @@ function sortingRecipes(evt) {
       }
     })
     if (foundedRecipes.length === 0) {
-      outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+      outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>' //тоже не очень здорово, тк выше есть nothingFounded
       return
     }
     outMenu.innerHTML = '';

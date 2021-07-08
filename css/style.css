@@ -31,7 +31,8 @@ body {
     line-height: 24px;
 }
 .section {
-    min-height: 100vh;
+    min-height: 110vh;
+    /* попробую убрат дрожание на мобильных */
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -94,6 +95,7 @@ body {
   top: 13px;
   right: 6px;
   background-color: transparent;
+  cursor: pointer;
   opacity: 0;
 }
 .filter-side-input:focus+.filter-side-reset {
@@ -118,7 +120,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 15px 30px;
-    margin-bottom: 56px;
+    margin-bottom: 40px;
 
 }
 .nav-btn {
