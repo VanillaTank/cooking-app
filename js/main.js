@@ -1,7 +1,7 @@
 import data from './data.js'
 
-
 window.onload = () => { showRandomRecipe() }
+
 const btnShowAll = $('#btnShowAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
