@@ -1,13 +1,6 @@
 import data from './data.js'
 
-
-window.onload = () => {
-  showRandomRecipe()
-  onClickAllRecipes()
-}
-
 const btnShowAll = $('#btnShowAll');
-const btnHideAll = $('#btnHideAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
@@ -16,16 +9,21 @@ const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 
 
-searchInput.addEventListener('keyup', keyupHandler)
+searchInput.addEventListener('keyup', (evt) => {
+  if (evt.code === 'Enter') {
+    onInputSaerchInput()
+  } else {
+    keyupHandler()
+  }
+})
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
-btnShowAll.addEventListener('click', onClickAllRecipes)
-btnHideAll.addEventListener('click', onClickHideBtn)
+btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
 
-//----------------------------------------------
-function onClickHideBtn() {
-  outMenu.innerHTML = '';
-  $('.btn-wrap').classList.add('m0');
+window.onload = () => {
+  showRandomRecipe()
+  onClickAllRecipes(btnShowAll)
 }
+//----------------------------------------------
 
 function showRandomRecipe() {
   if (data.length != 0) {
@@ -61,12 +59,24 @@ function $(el) {
   return document.querySelector(el);
 }
 
-function onClickAllRecipes() {
-  $('.btn-wrap').classList.remove('m0');
-  if (data.length != 0) {
+function onClickAllRecipes(targetBtn) {
+
+  if (targetBtn.classList.contains('active')) {
     outMenu.innerHTML = '';
-    data.forEach(item => { showRecipes(item) })
-  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+    $('.btn-wrap').classList.add('m0');
+    targetBtn.classList.remove('active');
+    targetBtn.innerText = 'Показать все'
+  } else {
+    if (data.length != 0) {
+      targetBtn.classList.add('active');
+      $('.btn-wrap').classList.remove('m0');
+      targetBtn.innerText = 'Скрыть все'
+      outMenu.innerHTML = '';
+      data.forEach(item => { showRecipes(item) })
+    } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+
+  }
+
 }
 
 function onInputSaerchInput() {
