@@ -10,8 +10,9 @@ const keyupHandler = debounce(() => { onInputSaerchInput() })
 
 
 searchInput.addEventListener('keyup', (evt) => {
-  if (evt.code === 'Enter') { onInputSaerchInput()
-  } else { keyupHandler()}
+  if (evt.code === 'Enter') {
+    onInputSaerchInput()
+  } else { keyupHandler() }
 })
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
@@ -56,6 +57,13 @@ function $(el) {
   return document.querySelector(el);
 }
 
+function onCliclShowToggle() {
+  btnShowAll.classList.add('active');
+  $('.btn-wrap').classList.remove('m0');
+  btnShowAll.innerText = 'Скрыть все'
+  outMenu.classList.remove('hide');
+}
+
 function onClickAllRecipes(targetBtn) {
 
   if (targetBtn.classList.contains('active')) {
@@ -63,25 +71,23 @@ function onClickAllRecipes(targetBtn) {
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
     targetBtn.innerText = 'Показать все'
+
+    searchInput.value = '';
+    navBtns.forEach(item => { item.classList.remove('chosen')})
+
   } else {
     if (data.length != 0) {
-      targetBtn.classList.add('active');
-      $('.btn-wrap').classList.remove('m0');
-      targetBtn.innerText = 'Скрыть все'
-      outMenu.classList.remove('hide');
+      onCliclShowToggle()
+      // searchInput.value = '';
+      // navBtns.forEach(item => { item.classList.remove('chosen') })
       outMenu.innerHTML = '';
       data.forEach(item => { showRecipes(item) })
     } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
-
   }
-
 }
 
 function onInputSaerchInput() {
-
-  outMenu.classList.remove('hide');
-  $('.btn-wrap').classList.remove('m0');
-
+  onCliclShowToggle()
   let val = searchInput.value.toLowerCase();
   let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
   if (val != '') {
@@ -168,7 +174,11 @@ function onClickMenuItem(evt) {
 }
 
 function sortingRecipes(evt) {
-  $('.btn-wrap').classList.remove('m0');
+
+  if (!btnShowAll.classList.contains('active')) {
+    onCliclShowToggle()
+  }
+
   navBtns.forEach(item => { item.classList.remove('chosen') })
   evt.currentTarget.classList.add("chosen");
   const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
