@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -15,11 +16,13 @@ html::-webkit-scrollbar {
 html::-moz-scrollbar {
     width: 0px;
     height: 0px;
-}
+} 
 ul>li {
     list-style: none;
 }
-
+ol>li{
+    margin-left: 1em;
+}
 body {
     font-family: 'PT Serif', serif;
     color: #272F16;
@@ -39,9 +42,19 @@ body {
     padding: 0 15px;
     margin: 0 auto;
 }
+.hide {
+    display: none;
+}
+.m0{
+    margin: 0 !important;
+}
+#btnHideAll {
+    display: none;
+    width: 100%;
+    grid-column: 1/4;
+}
 .container-inner {
     display: flex;
-    flex-wrap: wrap;
     padding: 52px 0;
     justify-content: space-between;
 }
@@ -65,7 +78,7 @@ body {
     border-radius: 7px;
     border: none;
     box-shadow: 0 0 3px rgba(51, 72, 7, .87);
-    margin-bottom: 43px;
+    margin-bottom: 22px;
     font-family: 'PT Serif', serif;
     color: #272F16;
     font-size: 18px;
@@ -76,7 +89,6 @@ body {
     line-height: 19px;
     font-family: 'Raleway', sans-serif;
     color: rgba(39, 47, 22, .76);
-
 }
 .input-wrap {
     position: relative;
@@ -89,6 +101,8 @@ body {
     width: 20px;
     height: 20px;
     background-image: url('../images/smb.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .btn-wrap {
     font-size: 0;
@@ -157,6 +171,9 @@ body {
     border-radius: 37px;
     position: sticky;
     top: 52px;
+
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
 }
 .outRecipe-title {
     font-size: 45px;

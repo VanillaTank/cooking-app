@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Блокнот рецептов</title>
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    <!-- удалить, если будут долго грузиться -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Raleway:wght@500&display=swap" rel="stylesheet">
-    <!-- удалить, если будут долго грузиться -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Raleway:wght@500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
 </head>
 
 <body>
@@ -26,30 +26,33 @@
                         </div>
 
                         <nav class="btn-wrap">
-                            <button class="nav-btn chosen">Белок</button>
-                            <button class="nav-btn">Овощи</button>
-                            <button class="nav-btn">Горячее</button>
-                            <button class="nav-btn">Молочное</button>
-                            <button class="nav-btn">Сладкое</button>
-                            <button class="nav-btn">Салаты</button>
-                            <button class="nav-btn">Рыба</button>
-                            <button class="nav-btn">Каши</button>
-                            <button class="nav-btn">Прочее</button>
+                            <button class="nav-btn nav-btn-filter">Белок</button>
+                            <button class="nav-btn nav-btn-filter">Овощи</button>
+                            <button class="nav-btn nav-btn-filter">Горячее</button>
+                            <button class="nav-btn nav-btn-filter">Молочное</button>
+                            <button class="nav-btn nav-btn-filter">Сладкое</button>
+                            <button class="nav-btn nav-btn-filter">Салаты</button>
+                            <button class="nav-btn nav-btn-filter">Рыба</button>
+                            <button class="nav-btn nav-btn-filter">Каши</button>
+                            <button class="nav-btn nav-btn-filter">Прочее</button>
                             <button class="nav-btn" id="btnShowAll">Показать все</button>
+                            <button class="nav-btn" id="btnHideAll">Скрыть все</button>
                         </nav>
-                        <ul class="outMenu"></ul>
+
+                        <ul class="outMenu"></ul>  
                     </div>
-                    <div></div>
                 </div>
 
 
                 <div class="result-side">
-                    <div class="outRecipe"></div>
+                    <div class="outRecipe">
+
                     </div>
                 </div>
-
-
             </div>
+
+
+        </div>
 
 
         </div>

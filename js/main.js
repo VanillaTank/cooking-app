@@ -1,27 +1,32 @@
 import data from './data.js'
 
-window.onload = () => { showRandomRecipe() }
+
+window.onload = () => {
+  showRandomRecipe()
+  onClickAllRecipes()
+}
 
 const btnShowAll = $('#btnShowAll');
+const btnHideAll = $('#btnHideAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
-const navBtns = [...document.querySelectorAll('.nav-btn')]
+const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
+const DEBOUNCE_INTERVAL = 300;
+const keyupHandler = debounce(() => { onInputSaerchInput() })
 
-searchInput.addEventListener('input', (evt) => { onInputSaerchInput(evt) })
 
-
+searchInput.addEventListener('keyup', keyupHandler)
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
-
-btnShowAll.addEventListener('click', () => {
-  if (data.length != 0) {
-    outMenu.innerHTML = '';
-    data.forEach(item => { showRecipes(item) })
-  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
-
-})
+btnShowAll.addEventListener('click', onClickAllRecipes)
+btnHideAll.addEventListener('click', onClickHideBtn)
 
 //----------------------------------------------
+function onClickHideBtn() {
+  outMenu.innerHTML = '';
+  $('.btn-wrap').classList.add('m0');
+}
+
 function showRandomRecipe() {
   if (data.length != 0) {
     const randomIndex = Math.floor(Math.random() * data.length)
@@ -56,10 +61,51 @@ function $(el) {
   return document.querySelector(el);
 }
 
-function onInputSaerchInput(evt) {
-  //поставить таймер, чтоб не искать на КАЖДЫЙ символ
-  //искать в дате по имени в title
-  //выводить showRecipes(item)
+function onClickAllRecipes() {
+  $('.btn-wrap').classList.remove('m0');
+  if (data.length != 0) {
+    outMenu.innerHTML = '';
+    data.forEach(item => { showRecipes(item) })
+  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+}
+
+function onInputSaerchInput() {
+
+  let val = searchInput.value.toLowerCase();
+  let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
+  if (val != '') {
+    elasticItems.forEach(elem => {
+      if (elem.innerText.toLowerCase().search(val) == -1) {
+        elem.classList.add('hide')
+        elem.innerHTML = elem.innerText
+      }
+      else {
+        elem.classList.remove('hide')
+
+      }
+    })
+  } else {
+    elasticItems.forEach(elem => {
+      elem.classList.remove('hide')
+      elem.innerHTML = elem.innerText
+    })
+
+  }
+}
+
+function debounce(fun) {
+  let lastTimeout = null;
+
+  return function () {
+    const args = arguments;
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout)
+    }
+    lastTimeout = window.setTimeout(function () {
+      lastTimeout = null;
+      fun.apply(null, args)
+    }, DEBOUNCE_INTERVAL)
+  }
 }
 
 function showRecipes(item) {
@@ -111,6 +157,7 @@ function onClickMenuItem(evt) {
 }
 
 function sortingRecipes(evt) {
+  $('.btn-wrap').classList.remove('m0');
   navBtns.forEach(item => { item.classList.remove('chosen') })
   evt.currentTarget.classList.add("chosen");
   const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
