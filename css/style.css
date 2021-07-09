@@ -145,7 +145,6 @@ body {
 .nav-btn#btnShowAll{
     width: 100%;
     grid-column: 1/4;
-    grid-row: 4/5;
 }
 .active#btnShowAll{
   background-color: rgb(107, 10, 10);
@@ -154,6 +153,9 @@ body {
   width: 100%;
   grid-column: 1/4;
   display: none;
+}
+.active#btnToggleFilters{
+  background-color: rgb(107, 10, 10);
 }
 .outMenuItemLi{
     padding: 9px 15px 10px;

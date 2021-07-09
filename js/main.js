@@ -4,6 +4,7 @@ const btnShowAll = $('#btnShowAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
+const btnToggleShowFilters = $('#btnToggleFilters')
 const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
@@ -22,6 +23,7 @@ searchInput.addEventListener('keyup', (evt) => {
 })
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
+btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 
 btnInputReset.addEventListener('click', () => {
   searchInput.value = '';
@@ -32,7 +34,22 @@ window.onload = () => {
   showRandomRecipe()
   onClickAllRecipes(btnShowAll)
 }
-//----------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------
+
+function onClickFilterToggle() {
+  if(!btnToggleShowFilters.classList.contains('active')) {
+    //фильтры показаны
+    btnToggleShowFilters.classList.add('active')
+    btnToggleShowFilters.innerText = 'Скрыть фильтры'
+    navBtns.forEach(item => { item.style.display = 'block'})
+  } else{
+    //фильтры скрыты
+    btnToggleShowFilters.classList.remove('active')
+    btnToggleShowFilters.innerText = 'Показать фильтры'
+    navBtns.forEach(item => { item.style.display = 'none'})
+  }
+}
 
 function showRandomRecipe() {
   if (data.length != 0) {
@@ -79,7 +96,7 @@ function $(el) {
 function onCliclShowToggle() {
   btnShowAll.classList.add('active');
   $('.btn-wrap').classList.remove('m0');
-  btnShowAll.innerText = 'Скрыть все'
+  btnShowAll.innerText = 'Скрыть рецепты'
   outMenu.classList.remove('hide');
 }
 
@@ -89,7 +106,7 @@ function onClickAllRecipes(targetBtn) {
     outMenu.classList.add('hide');
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
-    targetBtn.innerText = 'Показать все'
+    targetBtn.innerText = 'Показать рецепты'
     searchInput.value = '';
     navBtns.forEach(item => { item.classList.remove('chosen') })
   } else {

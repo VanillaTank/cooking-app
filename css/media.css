@@ -10,6 +10,14 @@
         line-height: 40px;
     }
 }
+@media (min-width: 1001px){
+  .nav-btn-filter {
+    display: block !important;
+  }
+  .filter-side {
+    min-width: 425px;
+  }
+}
 @media (max-width: 1000px) {
     .container-inner {
         flex-wrap: wrap;
@@ -40,6 +48,12 @@
     .nav-btn {
         width: auto;
         height: 44px;
+    }
+    #btnToggleFilters {
+      display: block;
+    }
+    .nav-btn-filter {
+      display: none;
     }
 }
 @media (max-width: 600px) {
