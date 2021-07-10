@@ -29,14 +29,33 @@ btnInputReset.addEventListener('click', () => {
 })
 
 window.onload = () => {
-  showRandomRecipe()
+  if (window.location.search === '?id=' || window.location.search === '') {
+    let randomIndex = Math.floor(Math.random() * data.length)
+    showRandomRecipe(randomIndex)
+  } else {
+    let recipeInd = window.location.search.slice(4);
+    showRandomRecipe(recipeInd)
+  }
   onClickAllRecipes(btnShowAll)
 }
-//----------------------------------------------
 
-function showRandomRecipe() {
+
+//----------------------------------------------
+function updateURL(recId) {
+  if (history.pushState) {
+    let baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    let newUrl = baseUrl + "?id=" + recId;
+    history.pushState(null, null, newUrl);
+  }
+  else {
+    console.warn('History API не поддерживается');
+  }
+}
+
+function showRandomRecipe(randomIndex) {
   if (data.length != 0) {
-    const randomIndex = Math.floor(Math.random() * data.length)
+    updateURL(randomIndex)
+
     const targetRecipe = data[randomIndex];
 
     const liSteps = () => {
@@ -115,7 +134,7 @@ function onInputSaerchInput() {
     isNotEmpty = elasticItems.some(item => {
       return !item.classList.contains('hide')
     })
-    if (!isNotEmpty) {outMenu.append(nothingFounded)}
+    if (!isNotEmpty) { outMenu.append(nothingFounded) }
     else { nothingFounded.remove() }
 
   } else {
@@ -164,6 +183,7 @@ function onClickMenuItem(evt) {
   const index = evt.currentTarget.id;
   const targetRecipe = data[index];
 
+  updateURL(index)
 
   const liSteps = () => {
     const outRecipesSteps = document.createElement('ol')

@@ -31,8 +31,7 @@ body {
     line-height: 24px;
 }
 .section {
-    min-height: 110vh;
-    /* попробую убрат дрожание на мобильных */
+    min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -70,7 +69,7 @@ body {
 .filter-side-input {
     width: 100%;
     height: 49px;
-    padding: 14px 17px 15px 49px;
+    padding: 14px 30px 15px 49px;
     outline: none;
     border-radius: 7px;
     border: none;
