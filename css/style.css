@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -23,6 +24,13 @@ ul>li {
 }
 ol>li{
     margin-left: 1em;
+}
+a {
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 body {
     font-family: 'PT Serif', serif;
@@ -157,11 +165,14 @@ body {
   background-color: rgb(107, 10, 10);
 }
 .outMenuItemLi{
-    padding: 9px 15px 10px;
     background-color: rgba(255, 255, 255, .89);
     border-radius: 2px;
     box-shadow: 0 0 3px #526534;
     cursor: pointer;
+}
+.outMenuItemLi a{
+  padding: 9px 15px 10px;
+  display: block;
 }
 .outMenuItemLiNone {
     padding: 9px 15px 10px;

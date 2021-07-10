@@ -30,11 +30,11 @@ btnInputReset.addEventListener('click', () => {
 })
 
 window.onload = () => {
-  let randomIndex = Math.floor(Math.random() * data.length)
-  if (window.location.search === '?id=' || window.location.search === '') {
+  let randomIndex = Math.floor(Math.random() * data.length-1)
+  if (window.location.hash === '') {
     showRandomRecipe(randomIndex)
   } else {
-    let recipeInd = window.location.search.slice(4);
+    let recipeInd = window.location.hash.slice(5);
     if (recipeInd > data.length-1 || recipeInd < 0) {
       showRandomRecipe(randomIndex)
       onClickAllRecipes(btnShowAll)
@@ -63,7 +63,7 @@ function onClickFilterToggle() {
 function updateURL(recId) {
   if (history.pushState) {
     let baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-    let newUrl = baseUrl + "?id=" + recId;
+    let newUrl = baseUrl + "#rec_" + recId;
     history.pushState(null, null, newUrl);
   }
   else {
@@ -92,7 +92,7 @@ function showRandomRecipe(randomIndex) {
     }
 
     const targetRecipeBlock = `
-    <div class="outRecipe-inner">
+    <div class="outRecipe-inner" id="res_${targetRecipe.id}">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}
@@ -182,7 +182,7 @@ function debounce(fun) {
 function showRecipes(item) {
   const outMenuItem = `
         <li id='${item.id}' class="outMenuItemLi">
-            <h3>${item.title}</h3>
+            <a href="#res_${item.id}">${item.title}</a>
         </li>`;
 
   outMenu.innerHTML += outMenuItem;
@@ -202,7 +202,7 @@ function onClickMenuItem(evt) {
   const index = evt.currentTarget.id;
   const targetRecipe = data[index];
 
-  updateURL(index)
+  // updateURL(index)
 
   const liSteps = () => {
     const outRecipesSteps = document.createElement('ol')
@@ -219,7 +219,7 @@ function onClickMenuItem(evt) {
   }
 
   const targetRecipeBlock = `
-    <div class="outRecipe-inner">
+    <div class="outRecipe-inner" id="res_${targetRecipe.id}">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}
