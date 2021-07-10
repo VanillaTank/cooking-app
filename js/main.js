@@ -77,7 +77,7 @@ function showRandomRecipe(randomIndex) {
     }
 
     const targetRecipeBlock = `
-    <div>
+    <div class="outRecipe-inner">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}
@@ -204,7 +204,7 @@ function onClickMenuItem(evt) {
   }
 
   const targetRecipeBlock = `
-    <div>
+    <div class="outRecipe-inner">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}

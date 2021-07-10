@@ -26,9 +26,11 @@
         margin: 40px auto 0;
     }
     .outRecipe {
-        overflow-y: visible;
         position: static;
-        max-height: 100%;
+    }
+    .outRecipe-inner {
+      max-height: 100%;
+      overflow-y: visible;
     }
     .outRecipe-steps {
         margin-bottom: 0;
