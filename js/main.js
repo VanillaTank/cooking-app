@@ -31,12 +31,12 @@ btnInputReset.addEventListener('click', () => {
 window.onload = () => {
   let randomIndex = Math.floor(Math.random() * data.length)
   if (window.location.search === '?id=' || window.location.search === '') {
-
     showRandomRecipe(randomIndex)
   } else {
     let recipeInd = window.location.search.slice(4);
-    if (recipeInd > data.length-1) {
+    if (recipeInd > data.length-1 || recipeInd < 0) {
       showRandomRecipe(randomIndex)
+      onClickAllRecipes(btnShowAll)
     }
       showRandomRecipe(recipeInd)
   }
