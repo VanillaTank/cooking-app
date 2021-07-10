@@ -8,13 +8,14 @@ const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 const btnInputReset = $('.filter-side-reset');
+const btnToggleShowFilters = $('#btnToggleFilters')
 let isNotEmpty = '';
 
 const nothingFounded = document.createElement('li');
 nothingFounded.className = 'outMenuItemLiNone';
 nothingFounded.innerText = 'Ничего не найдено'
 
-
+btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
     onInputSaerchInput()
@@ -45,6 +46,20 @@ window.onload = () => {
 
 
 //----------------------------------------------
+function onClickFilterToggle() {
+  if(!btnToggleShowFilters.classList.contains('active')) {
+    //фильтры показаны
+    btnToggleShowFilters.classList.add('active')
+    btnToggleShowFilters.innerText = 'Скрыть фильтры'
+    navBtns.forEach(item => { item.style.display = 'block'})
+  } else{
+    //фильтры скрыты
+    btnToggleShowFilters.classList.remove('active')
+    btnToggleShowFilters.innerText = 'Показать фильтры'
+    navBtns.forEach(item => { item.style.display = 'none'})
+  }
+}
+
 function updateURL(recId) {
   if (history.pushState) {
     let baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
@@ -102,7 +117,7 @@ function $(el) {
 function onCliclShowToggle() {
   btnShowAll.classList.add('active');
   $('.btn-wrap').classList.remove('m0');
-  btnShowAll.innerText = 'Скрыть все'
+  btnShowAll.innerText = 'Скрыть рецепты'
   outMenu.classList.remove('hide');
 }
 
@@ -112,7 +127,7 @@ function onClickAllRecipes(targetBtn) {
     outMenu.classList.add('hide');
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
-    targetBtn.innerText = 'Показать все'
+    targetBtn.innerText = 'Показать рецепты'
     searchInput.value = '';
     navBtns.forEach(item => { item.classList.remove('chosen') })
   } else {
