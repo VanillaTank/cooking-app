@@ -8,7 +8,7 @@ const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 const btnInputReset = $('.filter-side-reset');
-const btnToggleShowFilters = $('#btnToggleFilters')
+const btnToggleShowFilters = $('#btnToggleFilters');
 let isNotEmpty = '';
 
 const nothingFounded = document.createElement('li');
@@ -124,6 +124,7 @@ function onCliclShowToggle() {
 function onClickAllRecipes(targetBtn) {
 
   if (targetBtn.classList.contains('active')) {
+    //свернуть
     outMenu.classList.add('hide');
     $('.btn-wrap').classList.add('m0');
     targetBtn.classList.remove('active');
@@ -131,6 +132,7 @@ function onClickAllRecipes(targetBtn) {
     searchInput.value = '';
     navBtns.forEach(item => { item.classList.remove('chosen') })
   } else {
+    //развернуть
     renderData();
   }
 }
@@ -202,8 +204,6 @@ function onClickMenuItem(evt) {
   const index = evt.currentTarget.id;
   const targetRecipe = data[index];
 
-  // updateURL(index)
-
   const liSteps = () => {
     const outRecipesSteps = document.createElement('ol')
     outRecipesSteps.className = "outRecipe-steps"
@@ -233,7 +233,7 @@ function sortingRecipes(evt) {
   if (!btnShowAll.classList.contains('active')) {
     onCliclShowToggle()
   }
-
+  searchInput.value = '';
   navBtns.forEach(item => { item.classList.remove('chosen') })
   evt.currentTarget.classList.add("chosen");
   const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
