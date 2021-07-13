@@ -25,6 +25,13 @@ ul>li {
 ol>li{
     margin-left: 1em;
 }
+a {
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
 body {
     font-family: 'PT Serif', serif;
     color: #272F16;
@@ -200,34 +207,53 @@ a {
     width: 100%;
 }
 .outRecipe {
-    padding: 40px 89px;
+    padding: 40px 65px;
     background-color: rgba(255, 255, 255, .90);
     box-shadow: 0 0 3px rgba(51, 72, 7, .98);
     border-radius: 37px;
     position: sticky;
     top: 52px;
-
-    max-height: calc(100vh - 104px);
-    overflow-y: auto;
 }
 .outRecipe-title {
     font-size: 45px;
     line-height: 46px;
     margin-bottom: 17px;
+    padding-right: 10px;
 }
 .outRecipe-needs{
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     line-height: 26px;
     margin-bottom: 34px;
+    padding-right: 10px;
 }
 .outRecipe-steps{
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     line-height: 26px;
+    padding-right: 10px;
 }
 .outRecipe-comments{
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     line-height: 26px;
+    padding-right: 10px;
+}
+.outRecipe-inner {
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  scrollbar-color: #526534 #C5CEC4;
+  scrollbar-width: thin;
+}
+
+
+.outRecipe-inner::-webkit-scrollbar {
+  background-color: #C5CEC4;
+  width: 7px;
+  height: 10px;
+  border-radius: 10px;
+}
+.outRecipe-inner::-webkit-scrollbar-thumb {
+  background-color: #526534;
+  border-radius: 10px;
 }
