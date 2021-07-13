@@ -4,18 +4,18 @@ const btnShowAll = $('#btnShowAll');
 const outMenu = $('.outMenu');
 const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
-const btnToggleShowFilters = $('#btnToggleFilters')
 const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 const btnInputReset = $('.filter-side-reset');
+const btnToggleShowFilters = $('#btnToggleFilters')
 let isNotEmpty = '';
 
 const nothingFounded = document.createElement('li');
 nothingFounded.className = 'outMenuItemLiNone';
 nothingFounded.innerText = 'Ничего не найдено'
 
-
+btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
     onInputSaerchInput()
@@ -23,7 +23,6 @@ searchInput.addEventListener('keyup', (evt) => {
 })
 navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
-btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 
 btnInputReset.addEventListener('click', () => {
   searchInput.value = '';
@@ -31,12 +30,22 @@ btnInputReset.addEventListener('click', () => {
 })
 
 window.onload = () => {
-  showRandomRecipe()
+  let randomIndex = Math.floor(Math.random() * data.length-1)
+  if (window.location.hash === '') {
+    showRandomRecipe(randomIndex)
+  } else {
+    let recipeInd = window.location.hash.slice(5);
+    if (recipeInd > data.length-1 || recipeInd < 0) {
+      showRandomRecipe(randomIndex)
+      onClickAllRecipes(btnShowAll)
+    }
+      showRandomRecipe(recipeInd)
+  }
   onClickAllRecipes(btnShowAll)
 }
 
-//----------------------------------------------------------------------------------------------------------------
 
+//----------------------------------------------
 function onClickFilterToggle() {
   if(!btnToggleShowFilters.classList.contains('active')) {
     //фильтры показаны
@@ -51,9 +60,21 @@ function onClickFilterToggle() {
   }
 }
 
-function showRandomRecipe() {
+function updateURL(recId) {
+  if (history.pushState) {
+    let baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    let newUrl = baseUrl + "#rec_" + recId;
+    history.pushState(null, null, newUrl);
+  }
+  else {
+    console.warn('History API не поддерживается');
+  }
+}
+
+function showRandomRecipe(randomIndex) {
   if (data.length != 0) {
-    const randomIndex = Math.floor(Math.random() * data.length)
+    updateURL(randomIndex)
+
     const targetRecipe = data[randomIndex];
 
     const liSteps = () => {
@@ -71,7 +92,7 @@ function showRandomRecipe() {
     }
 
     const targetRecipeBlock = `
-    <div>
+    <div class="outRecipe-inner" id="res_${targetRecipe.id}">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}
@@ -132,7 +153,7 @@ function onInputSaerchInput() {
     isNotEmpty = elasticItems.some(item => {
       return !item.classList.contains('hide')
     })
-    if (!isNotEmpty) {outMenu.append(nothingFounded)}
+    if (!isNotEmpty) { outMenu.append(nothingFounded) }
     else { nothingFounded.remove() }
 
   } else {
@@ -161,7 +182,7 @@ function debounce(fun) {
 function showRecipes(item) {
   const outMenuItem = `
         <li id='${item.id}' class="outMenuItemLi">
-            <h3>${item.title}</h3>
+            <a href="#res_${item.id}">${item.title}</a>
         </li>`;
 
   outMenu.innerHTML += outMenuItem;
@@ -181,6 +202,7 @@ function onClickMenuItem(evt) {
   const index = evt.currentTarget.id;
   const targetRecipe = data[index];
 
+  // updateURL(index)
 
   const liSteps = () => {
     const outRecipesSteps = document.createElement('ol')
@@ -197,7 +219,7 @@ function onClickMenuItem(evt) {
   }
 
   const targetRecipeBlock = `
-    <div>
+    <div class="outRecipe-inner" id="res_${targetRecipe.id}">
         <h3 class="outRecipe-title">${targetRecipe.title}</h3>
         <div class="outRecipe-needs">${targetRecipe.needs.join('<br>')}</div>
         ${comment}
