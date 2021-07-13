@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -29,10 +30,17 @@ body {
     color: #272F16;
     font-size: 18px;
     line-height: 24px;
+    background-color: #ECEDE8;
+}
+a {
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 .section {
-    min-height: 110vh;
-    /* попробую убрат дрожание на мобильных */
+    min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -70,7 +78,7 @@ body {
 .filter-side-input {
     width: 100%;
     height: 49px;
-    padding: 14px 17px 15px 49px;
+    padding: 14px 30px 15px 49px;
     outline: none;
     border-radius: 7px;
     border: none;
@@ -96,10 +104,13 @@ body {
   right: 6px;
   background-color: transparent;
   cursor: pointer;
-  opacity: 0;
+  display: none;
 }
 .filter-side-input:focus+.filter-side-reset {
-  opacity: 1;
+  display: block;
+}
+.filter-side-reset:active {
+  display: block;
 }
 .input-wrap {
     position: relative;
@@ -158,11 +169,14 @@ body {
   background-color: rgb(107, 10, 10);
 }
 .outMenuItemLi{
-    padding: 9px 15px 10px;
     background-color: rgba(255, 255, 255, .89);
     border-radius: 2px;
     box-shadow: 0 0 3px #526534;
     cursor: pointer;
+}
+.outMenuItemLi a{
+  padding: 9px 15px 10px;
+  display: block;
 }
 .outMenuItemLiNone {
     padding: 9px 15px 10px;

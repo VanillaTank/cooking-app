@@ -115,7 +115,7 @@
         font-size: 16px;
         height: 42px;
         margin-bottom: 17px;
-        padding: 13px 17px 15px 40px;
+        padding: 13px 30px 15px 40px;
     }
     .filter-side-reset{
       top: 9px;
@@ -137,6 +137,7 @@
   }
   .filter-side-input {
     font-size: 14px;
+    padding: 13px 25px 15px 40px;
   }
   .filter-side-reset{
     right: 3px;
