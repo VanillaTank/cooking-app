@@ -139,6 +139,7 @@
   }
   .filter-side-input {
     font-size: 14px;
+    padding: 13px 25px 15px 40px;
   }
   .filter-side-reset{
     right: 3px;
