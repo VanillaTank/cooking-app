@@ -120,7 +120,7 @@ function onInputSaerchInput() {
   let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
   if (val != '') {
     elasticItems.forEach(elem => {
-      if (elem.innerText.toLowerCase().search(val) == -1) {
+      if (elem.innerText.toLowerCase().indexOf(val) == -1) {
         elem.classList.add('hide')
         elem.innerHTML = elem.innerText
       }
