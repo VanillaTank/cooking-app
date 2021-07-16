@@ -83,6 +83,11 @@
     .outRecipe-needs{
         margin-bottom: 17px;
     }
+    .outRecipe-comments{
+      font-size: 15px;
+      line-height: 20px;
+      margin-bottom: 8px;
+    }
 
 }
 @media (max-width: 510px) {
@@ -116,6 +121,10 @@
     .outRecipe-needs, .outRecipe-steps {
         font-size: 16px;
         line-height: 20px;
+    }
+    .outRecipe-comments{
+      font-size: 13px;
+      line-height: 17px;
     }
     .filter-side-input {
         font-size: 16px;

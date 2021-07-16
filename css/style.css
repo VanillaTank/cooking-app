@@ -236,9 +236,10 @@ a {
 }
 .outRecipe-comments{
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 17px;
+    line-height: 23px;;
     padding-right: 10px;
+    margin-bottom: 20px;
 }
 .outRecipe-inner {
   overflow-y: auto;
