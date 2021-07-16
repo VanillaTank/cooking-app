@@ -50,8 +50,8 @@ a {
     min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-position: center -80px;
+    background-size: auto auto;
     background-attachment: fixed;
 }
 .container {
