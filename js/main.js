@@ -147,7 +147,6 @@ function onInputSaerchInput() {
     elasticItems.forEach(elem => {
       if (elem.innerText.toLowerCase().indexOf(val) == -1) {
         elem.classList.add('hide')
-        elem.innerHTML = elem.innerText
       }
       else {
         elem.classList.remove('hide')
@@ -166,9 +165,8 @@ function onInputSaerchInput() {
     elasticItems.forEach(elem => {
       console.log(elem);
       elem.classList.remove('hide')
-      elem.innerHTML = elem.innerText
     })
-
+    nothingFounded.remove()
   }
 }
 

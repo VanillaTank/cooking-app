@@ -27,9 +27,6 @@ ol>li{
 }
 a {
   text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
   color: inherit;
 }
 body {
@@ -39,20 +36,16 @@ body {
     line-height: 24px;
     background-color: #ECEDE8;
 }
-a {
-  text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
-}
 .section {
     min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
-    background-position: center -80px;
-    background-size: auto auto;
+    background-position: center center;
+    background-size: cover;
     background-attachment: fixed;
+    -webkit-background-attachment: fixed;
+    -moz-background-attachment: fixed;
+
 }
 .container {
     max-width: 1200px;
@@ -159,22 +152,26 @@ a {
     background-color: #60753E;
 }
 .nav-btn.chosen {
-    background-color: #263C03;
+    background-color: #263c03;
+    border: 1px solid #365013;
 }
 .nav-btn#btnShowAll{
     width: 100%;
     grid-column: 1/4;
 }
 .active#btnShowAll{
-  background-color: rgb(107, 10, 10);
+  background-color: #727f09;
+  border: 1px solid #365013;
 }
 #btnToggleFilters {
   width: 100%;
   grid-column: 1/4;
   display: none;
+  margin-bottom: 10px;
 }
 .active#btnToggleFilters{
-  background-color: rgb(107, 10, 10);
+  background-color: #727f09;
+  border: 1px solid #365013;
 }
 .outMenuItemLi{
     background-color: rgba(255, 255, 255, .89);
@@ -187,11 +184,12 @@ a {
   display: block;
 }
 .outMenuItemLiNone {
-    padding: 9px 15px 10px;
-    background-color: rgb(150 29 29 / 90%);
+    padding: 6px 14px 7px;
+    background-color: rgb(160 47 47);
     border-radius: 2px;
     box-shadow: 0 0 3px #822a2a;
     color: #fff;
+    text-align: center;
 }
 .outMenuItemLi+.outMenuItemLi {
     margin-top: 20px;
@@ -200,7 +198,7 @@ a {
     background-color: #F7FAE9;
 }
 .outMenuItemLi.active {
-    background-color: rgba(82, 101, 52, .91);
+    background-color: #3a540f;
     color: #fff;
 }
 .result-side {
@@ -236,9 +234,10 @@ a {
 }
 .outRecipe-comments{
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 17px;
+    line-height: 23px;;
     padding-right: 10px;
+    margin-bottom: 20px;
 }
 .outRecipe-inner {
   overflow-y: auto;

@@ -19,6 +19,10 @@
   }
 }
 @media (max-width: 1000px) {
+  .section {
+    background-position: center -80px;
+    background-size: auto auto;
+  }
     .container-inner {
         flex-wrap: wrap;
     }
@@ -79,6 +83,11 @@
     .outRecipe-needs{
         margin-bottom: 17px;
     }
+    .outRecipe-comments{
+      font-size: 15px;
+      line-height: 20px;
+      margin-bottom: 8px;
+    }
 
 }
 @media (max-width: 510px) {
@@ -90,6 +99,9 @@
     }
     .outMenuItemLi {
         font-size: 16px;
+    }
+    .outMenuItemLiNone {
+      font-size: 16px;
     }
 }
 @media (max-width: 450px) {
@@ -112,6 +124,10 @@
     .outRecipe-needs, .outRecipe-steps {
         font-size: 16px;
         line-height: 20px;
+    }
+    .outRecipe-comments{
+      font-size: 13px;
+      line-height: 17px;
     }
     .filter-side-input {
         font-size: 16px;
