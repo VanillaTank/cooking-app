@@ -36,7 +36,7 @@ body {
     line-height: 24px;
     background-color: #ECEDE8;
 }
-.section {
+/* .section {
     min-height: 100vh;
     background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
     background-repeat: no-repeat;
@@ -45,6 +45,19 @@ body {
     background-attachment: fixed;
     -webkit-background-attachment: fixed;
     -moz-background-attachment: fixed;
+} */
+.bgi {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
 
 }
 .container {
