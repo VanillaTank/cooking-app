@@ -118,6 +118,8 @@ function onCliclShowToggle() {
   btnShowAll.classList.add('active');
   $('.btn-wrap').classList.remove('m0');
   btnShowAll.innerText = 'Скрыть рецепты'
+
+  //баг с удалением ссылок и раскрытием ничего не найдено
   outMenu.classList.remove('hide');
 }
 
@@ -153,16 +155,20 @@ function onInputSaerchInput() {
     })
 
     isNotEmpty = elasticItems.some(item => {
-      return !item.classList.contains('hide')
+      return !item.classList.contains('hide') //верни элементы без hide
     })
-    if (!isNotEmpty) { outMenu.append(nothingFounded) }
+
+    if (isNotEmpty) { outMenu.append(nothingFounded) }
     else { nothingFounded.remove() }
 
   } else {
+    //баг с удалением ссылок и раскрытием ничего не найдено
     elasticItems.forEach(elem => {
+      console.log(elem);
       elem.classList.remove('hide')
       elem.innerHTML = elem.innerText
     })
+
   }
 }
 
