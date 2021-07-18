@@ -19,6 +19,10 @@
   }
 }
 @media (max-width: 1000px) {
+  .bgi {
+    background-size: auto auto;
+    background-position: auto -80px;
+  }
     .container-inner {
         flex-wrap: wrap;
     }
