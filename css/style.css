@@ -36,16 +36,6 @@ body {
     line-height: 24px;
     background-color: #ECEDE8;
 }
-/* .section {
-    min-height: 100vh;
-    background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
-    -webkit-background-attachment: fixed;
-    -moz-background-attachment: fixed;
-} */
 .bgi {
   z-index: -1;
   position: fixed;
@@ -57,6 +47,7 @@ body {
   background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
+
 }
 .container {
     max-width: 1200px;

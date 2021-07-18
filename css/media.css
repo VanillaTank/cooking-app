@@ -19,10 +19,6 @@
   }
 }
 @media (max-width: 1000px) {
-  .section {
-    background-position: center -80px;
-    background-size: auto auto;
-  }
     .container-inner {
         flex-wrap: wrap;
     }
