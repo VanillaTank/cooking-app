@@ -41,13 +41,14 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: -80px;
+  bottom: -60px;
+  height: 100%;
   width: 100%;
   background-size: cover;
   background-image: url('../images/imgonline-com-ua-Compressed-Cr7J2Z87bwNBpRmi.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+
 }
 .container {
     max-width: 1200px;
