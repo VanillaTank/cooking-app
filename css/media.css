@@ -22,6 +22,7 @@
   .bgi {
     background-size: auto auto;
     background-position: center -80px;
+    height: 115%;
   }
     .container-inner {
         flex-wrap: wrap;
@@ -73,8 +74,8 @@
         width: 47%;
     }
     .outRecipe-title {
-        font-size: 33px;
-        line-height: 36px;
+        font-size: 30px;
+        line-height: 32px;
     }
     .outRecipe-needs,.outRecipe-steps {
         font-size: 18px;
@@ -118,8 +119,8 @@
         background-color: rgba(255, 255, 255, .7);
     }
     .outRecipe-title {
-        font-size: 30px;
-        line-height: 32px;
+        font-size: 28px;
+        line-height: 30px;
     }
     .outRecipe-needs, .outRecipe-steps {
         font-size: 16px;
