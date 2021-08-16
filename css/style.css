@@ -206,6 +206,7 @@ body {
 .result-side {
     max-width: 674px;
     width: 100%;
+    position: relative;
 }
 .outRecipe {
     padding: 40px 65px;
@@ -258,4 +259,12 @@ body {
 .outRecipe-inner::-webkit-scrollbar-thumb {
   background-color: #526534;
   border-radius: 10px;
+}
+.arrow-up {
+  width: 30px;
+  position: absolute;
+  top: 32px;
+  right: 20px;
+  cursor: pointer;
+  display: none;
 }

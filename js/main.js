@@ -9,6 +9,7 @@ const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => { onInputSaerchInput() })
 const btnInputReset = $('.filter-side-reset');
 const btnToggleShowFilters = $('#btnToggleFilters');
+const arrowUp = $('.arrow-up');
 let isNotEmpty = '';
 
 const nothingFounded = document.createElement('li');
@@ -44,8 +45,11 @@ window.onload = () => {
   onClickAllRecipes(btnShowAll)
 }
 
+arrowUp.addEventListener('click', onClickArrowUp)
 
 //----------------------------------------------
+function onClickArrowUp () { window.scrollTo(0, 0) }
+
 function onClickFilterToggle() {
   if(!btnToggleShowFilters.classList.contains('active')) {
     //фильтры показаны

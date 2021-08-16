@@ -62,6 +62,9 @@
     .nav-btn-filter {
       display: none;
     }
+    .arrow-up {
+      display: block;
+    }
 }
 @media (max-width: 600px) {
     .btn-wrap {
@@ -89,7 +92,9 @@
       line-height: 20px;
       margin-bottom: 8px;
     }
-
+    .arrow-up {
+      width: 22px;
+    }
 }
 @media (max-width: 510px) {
     .container-inner {
