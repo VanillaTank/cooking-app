@@ -6,7 +6,7 @@ const outRecipe = $('.outRecipe');
 const searchInput = $('#searchInput');
 const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
-const keyupHandler = debounce(() => { onInputSaerchInput() })
+const keyupHandler = debounce(() => { onInputSearchInput() })
 const btnInputReset = $('.filter-side-reset');
 const btnToggleShowFilters = $('#btnToggleFilters');
 const arrowUp = $('.arrow-up');
@@ -19,10 +19,10 @@ nothingFounded.innerText = 'Ничего не найдено'
 btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
-    onInputSaerchInput()
+    onInputSearchInput()
   } else { keyupHandler() }
 })
-navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt)) })
+navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt.currentTarget)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
 
 btnInputReset.addEventListener('click', () => {
@@ -31,16 +31,16 @@ btnInputReset.addEventListener('click', () => {
 })
 
 window.onload = () => {
-  let randomIndex = Math.floor(Math.random() * data.length-1)
+  let randomIndex = Math.floor(Math.random() * data.length - 1)
   if (window.location.hash === '') {
     showRandomRecipe(randomIndex)
   } else {
     let recipeInd = window.location.hash.slice(5);
-    if (recipeInd > data.length-1 || recipeInd < 0) {
+    if (recipeInd > data.length - 1 || recipeInd < 0) {
       showRandomRecipe(randomIndex)
       onClickAllRecipes(btnShowAll)
     }
-      showRandomRecipe(recipeInd)
+    showRandomRecipe(recipeInd)
   }
   onClickAllRecipes(btnShowAll)
 }
@@ -48,19 +48,24 @@ window.onload = () => {
 arrowUp.addEventListener('click', onClickArrowUp)
 
 //----------------------------------------------
-function onClickArrowUp () { window.scrollTo(0, 0) }
+function onClickArrowUp() { window.scrollTo(0, 0) }
+
+function revokeFiltration(filterBtn) {
+  filterBtn.classList.remove('chosen')
+  renderData()
+}
 
 function onClickFilterToggle() {
-  if(!btnToggleShowFilters.classList.contains('active')) {
+  if (!btnToggleShowFilters.classList.contains('active')) {
     //фильтры показаны
     btnToggleShowFilters.classList.add('active')
     btnToggleShowFilters.innerText = 'Скрыть фильтры'
-    navBtns.forEach(item => { item.style.display = 'block'})
-  } else{
+    navBtns.forEach(item => { item.style.display = 'block' })
+  } else {
     //фильтры скрыты
     btnToggleShowFilters.classList.remove('active')
     btnToggleShowFilters.innerText = 'Показать фильтры'
-    navBtns.forEach(item => { item.style.display = 'none'})
+    navBtns.forEach(item => { item.style.display = 'none' })
   }
 }
 
@@ -143,7 +148,7 @@ function onClickAllRecipes(targetBtn) {
   }
 }
 
-function onInputSaerchInput() {
+function onInputSearchInput() {
   onCliclShowToggle()
   let val = searchInput.value.toLowerCase();
   let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
@@ -158,19 +163,22 @@ function onInputSaerchInput() {
     })
 
     isNotEmpty = elasticItems.some(item => {
-      return !item.classList.contains('hide') //верни элементы без hide
+      return !item.classList.contains('hide')
     })
 
-    if (isNotEmpty) { outMenu.append(nothingFounded) }
+    if (!isNotEmpty) { outMenu.append(nothingFounded) }
     else { nothingFounded.remove() }
 
   } else {
-    //баг с удалением ссылок и раскрытием ничего не найдено
-    elasticItems.forEach(elem => {
-      console.log(elem);
-      elem.classList.remove('hide')
-    })
-    nothingFounded.remove()
+    nothingFounded.remove();
+    if(navBtns.some((el) => el.classList.contains('chosen'))){
+      const activeFilterBtn = navBtns.find((el) => el.classList.contains('chosen'))
+      sortingRecipes(activeFilterBtn, false)
+    } 
+    else {
+      renderData();
+    }
+    
   }
 }
 
@@ -236,15 +244,21 @@ function onClickMenuItem(evt) {
   outRecipe.innerHTML = targetRecipeBlock;
 }
 
-function sortingRecipes(evt) {
+function sortingRecipes(filterBtn, isNeedRevoke = true) {
 
   if (!btnShowAll.classList.contains('active')) {
     onCliclShowToggle()
   }
+
+  if (filterBtn.classList.contains('chosen') && isNeedRevoke) {
+    revokeFiltration(filterBtn);
+    return
+  }
+
   searchInput.value = '';
   navBtns.forEach(item => { item.classList.remove('chosen') })
-  evt.currentTarget.classList.add("chosen");
-  const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
+  filterBtn.classList.add("chosen");
+  const targetGroup = filterBtn.textContent; //не очень здоровая штука
   if (data.length != 0) {
     let foundedRecipes = [];
     data.forEach(item => {
@@ -253,10 +267,14 @@ function sortingRecipes(evt) {
       }
     })
     if (foundedRecipes.length === 0) {
-      outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>' //тоже не очень здорово, тк выше есть nothingFounded
+      outMenu.innerHTML = '';
+      outMenu.append(nothingFounded)
       return
     }
     outMenu.innerHTML = '';
     foundedRecipes.forEach(item => { showRecipes(item) })
-  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+  } else {
+    outMenu.innerHTML = '';
+    outMenu.append(nothingFounded)
+  }
 }
