@@ -7,7 +7,7 @@ const searchInput = $('#searchInput');
 const navBtns = [...document.querySelectorAll('.nav-btn-filter')]
 const DEBOUNCE_INTERVAL = 300;
 const keyupHandler = debounce(() => {
-  onInputSaerchInput()
+  onInputSearchInput()
 })
 const btnInputReset = $('.filter-side-reset');
 const btnToggleShowFilters = $('#btnToggleFilters');
@@ -21,13 +21,13 @@ nothingFounded.innerText = 'Ничего не найдено'
 btnToggleShowFilters.addEventListener('click', onClickFilterToggle)
 searchInput.addEventListener('keyup', (evt) => {
   if (evt.code === 'Enter') {
-    onInputSaerchInput()
+    onInputSearchInput()
   } else {
     keyupHandler()
   }
 })
 navBtns.forEach(item => {
-  item.addEventListener('click', (evt) => sortingRecipes(evt))
+  item.addEventListener('click', (evt) => sortingRecipes(evt.currentTarget))
 })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
 
@@ -45,9 +45,8 @@ window.onload = () => {
     btnToggleShowFilters.classList.remove('active');
     isMobile = true;
   }
-
   if (window.location.hash === '') {
-    showRandomRecipe(randomIndex);
+    showRandomRecipe(randomIndex)
   } else {
     let recipeInd = window.location.hash.slice(5);
     if (recipeInd > data.length - 1 || recipeInd < 0) {
@@ -58,7 +57,7 @@ window.onload = () => {
     }
     showRandomRecipe(recipeInd);
   }
-  onClickAllRecipes(btnShowAll);
+  onClickAllRecipes(btnShowAll)
 }
 
 arrowUp.addEventListener('click', onClickArrowUp)
@@ -69,7 +68,7 @@ function onClickArrowUp() {
 }
 
 function onClickFilterToggle() {
-  if (!btnToggleShowFilters.classList.contains('active')) {
+  if(!btnToggleShowFilters.classList.contains('active')) {
     //фильтры показаны
     btnToggleShowFilters.classList.add('active')
     btnToggleShowFilters.innerText = 'Скрыть фильтры'
@@ -91,7 +90,8 @@ function updateURL(recId) {
     let baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
     let newUrl = baseUrl + "#rec_" + recId;
     history.pushState(null, null, newUrl);
-  } else {
+  }
+  else {
     console.warn('History API не поддерживается');
   }
 }
@@ -131,9 +131,7 @@ function renderData() {
   if (data.length != 0) {
     onCliclShowToggle()
     outMenu.innerHTML = '';
-    data.forEach(item => {
-      showRecipes(item)
-    })
+    data.forEach(item => { showRecipes(item) })
   } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
 }
 
@@ -159,9 +157,7 @@ function onClickAllRecipes(targetBtn) {
     targetBtn.classList.remove('active');
     targetBtn.innerText = 'Показать рецепты'
     searchInput.value = '';
-    navBtns.forEach(item => {
-      item.classList.remove('chosen')
-    })
+    navBtns.forEach(item => { item.classList.remove('chosen') })
   } else {
     //развернуть
     renderData();
@@ -174,9 +170,10 @@ function onInputSaerchInput() {
   let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
   if (val != '') {
     elasticItems.forEach(elem => {
-      if (elem.innerText.toLowerCase().indexOf(val) === -1) {
+      if (elem.innerText.toLowerCase().indexOf(val) == -1) {
         elem.classList.add('hide')
-      } else {
+      }
+      else {
         elem.classList.remove('hide')
       }
     })
@@ -185,7 +182,7 @@ function onInputSaerchInput() {
       return !item.classList.contains('hide') //верни элементы без hide
     })
 
-    if (isNotEmpty) {
+    if (!isNotEmpty) {
       outMenu.append(nothingFounded)
     } else {
       nothingFounded.remove()
@@ -228,9 +225,7 @@ function showRecipes(item) {
   outMenuItemLi.forEach(item => {
 
     item.addEventListener('click', (evt) => {
-      outMenuItemLi.forEach(it => {
-        it.classList.remove("active")
-      })
+      outMenuItemLi.forEach(it => { it.classList.remove("active") })
       onClickMenuItem(evt)
     })
   })
@@ -274,8 +269,8 @@ function sortingRecipes(evt) {
   navBtns.forEach(item => {
     item.classList.remove('chosen')
   })
-  evt.currentTarget.classList.add("chosen");
-  const targetGroup = evt.currentTarget.textContent; //не очень здоровая штука
+  filterBtn.classList.add("chosen");
+  const targetGroup = filterBtn.textContent; //не очень здоровая штука
   if (data.length != 0) {
     let foundedRecipes = [];
     data.forEach(item => {
@@ -291,5 +286,8 @@ function sortingRecipes(evt) {
     foundedRecipes.forEach(item => {
       showRecipes(item)
     })
-  } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
+  } else {
+    outMenu.innerHTML = '';
+    outMenu.append(nothingFounded)
+  }
 }
