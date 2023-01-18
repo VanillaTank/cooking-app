@@ -23,7 +23,6 @@ searchInput.addEventListener('keyup', (evt) => {
         onInputSearchInput()
     } else { keyupHandler() }
 })
-navBtns.forEach(item => { item.addEventListener('click', (evt) => sortingRecipes(evt.currentTarget)) })
 btnShowAll.addEventListener('click', (evt) => onClickAllRecipes(evt.currentTarget))
 
 btnInputReset.addEventListener('click', () => {
@@ -258,7 +257,7 @@ function onClickMenuItem(evt) {
     outRecipe.innerHTML = targetRecipeBlock;
 }
 
-function sortingRecipes(filterBtn, isNeedRevoke = true) {
+function sortingRecipes(evt) {
 
     if (!btnShowAll.classList.contains('active')) {
         onCliclShowToggle()
