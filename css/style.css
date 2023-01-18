@@ -134,8 +134,6 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 15px 30px;
-    margin-bottom: 40px;
-
 }
 .nav-btn {
     width: 102px;
@@ -192,8 +190,9 @@ body {
     box-shadow: 0 0 3px #822a2a;
     color: #fff;
     text-align: center;
+    margin-top: 20px;
 }
-.outMenuItemLi+.outMenuItemLi {
+.outMenuItemLi {
     margin-top: 20px;
 }
 .outMenuItemLi:hover {
