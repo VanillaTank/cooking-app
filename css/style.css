@@ -216,8 +216,8 @@ body {
     top: 52px;
 }
 .outRecipe-title {
-    font-size: 45px;
-    line-height: 46px;
+    font-size: 34px;
+    line-height: 38px;
     margin-bottom: 17px;
     padding-right: 10px;
 }
@@ -244,20 +244,22 @@ body {
 .outRecipe-inner {
   overflow-y: auto;
   max-height: calc(100vh - 140px);
-  scrollbar-color: #526534 #C5CEC4;
-  scrollbar-width: thin;
 }
 
 
 .outRecipe-inner::-webkit-scrollbar {
-  background-color: #C5CEC4;
   width: 7px;
   height: 10px;
-  border-radius: 10px;
 }
 .outRecipe-inner::-webkit-scrollbar-thumb {
   background-color: #526534;
   border-radius: 10px;
+  cursor: pointer;
+}
+.outRecipe-inner::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #C5CEC4;
+  cursor: pointer;
 }
 .arrow-up {
   width: 30px;
