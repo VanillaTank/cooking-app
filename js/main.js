@@ -128,7 +128,7 @@ function showRandomRecipe(randomIndex) {
 
 function renderData() {
     if (data.length != 0) {
-        onCliclShowToggle()
+        onClickShowToggle()
         outMenu.innerHTML = '';
         data.forEach(item => { showRecipes(item) })
     } else outMenu.innerHTML = '<li class="outMenuItemLiNone">Ничего не найдено</li>'
@@ -138,7 +138,7 @@ function $(el) {
     return document.querySelector(el);
 }
 
-function onCliclShowToggle() {
+function onClickShowToggle() {
     btnShowAll.classList.add('active');
     $('.btn-wrap').classList.remove('m0');
     btnShowAll.innerText = 'Скрыть рецепты'
@@ -164,12 +164,12 @@ function onClickAllRecipes(targetBtn) {
 }
 
 function onInputSearchInput() {
-    onCliclShowToggle()
+    onClickShowToggle()
     let val = searchInput.value.toLowerCase();
     let elasticItems = [...document.querySelectorAll('.outMenuItemLi')];
-    if (val != '') {
+    if (val !== '') {
         elasticItems.forEach(elem => {
-            if (elem.innerText.toLowerCase().indexOf(val) == -1) {
+            if (elem.innerText.toLowerCase().indexOf(val) === -1) {
                 elem.classList.add('hide')
             }
             else {
@@ -177,9 +177,7 @@ function onInputSearchInput() {
             }
         })
 
-        isNotEmpty = elasticItems.some(item => {
-            return !item.classList.contains('hide')
-        })
+        isNotEmpty = elasticItems.some(item => !item.classList.contains('hide'))
 
         if (!isNotEmpty) { outMenu.append(nothingFounded) }
         else { nothingFounded.remove() }
@@ -260,9 +258,8 @@ function onClickMenuItem(evt) {
 }
 
 function sortingRecipes(filterBtn, isNeedRevoke = true) {
-
     if (!btnShowAll.classList.contains('active')) {
-        onCliclShowToggle()
+        onClickShowToggle()
     }
 
     if (filterBtn.classList.contains('chosen') && isNeedRevoke) {
@@ -274,7 +271,7 @@ function sortingRecipes(filterBtn, isNeedRevoke = true) {
     navBtns.forEach(item => { item.classList.remove('chosen') })
     filterBtn.classList.add("chosen");
     const targetGroup = filterBtn.textContent; //не очень здоровая штука
-    if (data.length != 0) {
+    if (data.length !== 0) {
         let foundedRecipes = [];
         data.forEach(item => {
             for (let i = 0; i < item.groups.length; i++) {
